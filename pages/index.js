@@ -5,6 +5,10 @@ import City from '/components/city'
 import Status from '/components/status'
 
 export default function Home() {
+  // fetch('http://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=22c2052838b535786389a14d7c9d16f5')
+  // .then(response => response.json())
+  // .then(data => console.log(data));
+
   return (
     <div className="container">
       <Head>
@@ -52,6 +56,23 @@ export default function Home() {
 
         .default-border-radius {
           border-radius: 0.25em;
+        }
+
+        .status-item {
+          font-size: calc(1.3rem + .6vw);
+        }
+
+        .last-searched {
+          padding-left: 0;
+        }
+
+        .last-searched li {
+          list-style: none;
+          cursor: pointer;
+        }
+
+        .last-searched li:hover {
+          text-decoration: underline;
         }
       `}</style>
     </div>
