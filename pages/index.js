@@ -1,38 +1,43 @@
+import React, { Component } from 'react';
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Top from '/components/top'
 import City from '/components/city'
 import Status from '/components/status'
+import { Provider } from "react-redux";
+import store from '/store';
 
-export default function Home() {
-  // fetch('http://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=22c2052838b535786389a14d7c9d16f5')
-  // .then(response => response.json())
-  // .then(data => console.log(data));
+class Home extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
-        <Top />
-        <City />
-        <Status />
-      </main>
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="container">
+          <Head>
+            <title>React Weather App</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <main>
+            <Top />
+            <City />
+            <Status />
+          </main>
 
-      <footer>
-        <div className="mt-4 footer-text">© Weather Forecast 2021</div>
-      </footer>
+          <footer>
+            <div className="mt-4 footer-text">© Weather Forecast 2021</div>
+          </footer>
 
-      <style jsx>{`
+          <style jsx>{`
         .footer-text {
           color: #e6e6e6;
         }
       `}</style>
 
-      <style jsx global>{`
+          <style jsx global>{`
         html,
         body {
           padding: 0;
@@ -75,6 +80,10 @@ export default function Home() {
           text-decoration: underline;
         }
       `}</style>
-    </div>
-  )
+        </div>
+      </Provider>
+    );
+  }
 }
+
+export default Home;
