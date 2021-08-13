@@ -1,4 +1,4 @@
-export default function Top() {
+const Top = () => {
     return (
         <div className="container mt-4">
             <div className="row">
@@ -7,3 +7,5 @@ export default function Top() {
         </div>
     )
 }
+
+export default Top;

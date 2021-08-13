@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { useSelector } from 'react-redux';
-import City from "./city";
+import React from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import process from "../process";
 
 
-function Status() {
+const Status = () => {
+  const dispatch = useDispatch();
   const { cities, weatherForecast } = useSelector(state => state);
   let weather = {};
   let coord = {};
@@ -20,8 +21,8 @@ function Status() {
     main = { temp: 273.15 };
   }
 
-  const CityClick = (e, key) => {
-    console.log(e);
+  const CityClick = (key) => {
+    process(key, dispatch, cities);
   }
 
   return (
@@ -46,7 +47,7 @@ function Status() {
               cities.map(city => {
                 const { key, name } = city;
 
-                return <li key={key} onClick={CityClick.bind(this, key)} className="text-muted mt-2">{name}</li>;
+                return <li key={key} onClick={() => CityClick(key)} className="text-muted mt-2">{name}</li>;
               })
             }
           </ul>

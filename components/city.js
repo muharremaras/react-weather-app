@@ -1,28 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCity } from '../store/actions/cities';
-import axios from 'axios';
-import { assignWeatherForecast } from '../store/actions/weatherForecast';
-import config from '../config'
+import process from '../process'
 
-function City() {
+
+const City = () => {
     const dispatch = useDispatch();
     const [city, setCity] = useState({ key: "", name: "" });
     const { cities, weatherForecast } = useSelector(state => state);
-    
-    const onAddSubmit = (e) => {
-        axios
-            .get('http://api.openweathermap.org/data/2.5/weather?q=' + city.key + '&appid='+config.API_KEY)
-            .then(({ data }) => {
-                if (cities.filter(c => c.key === city.key).length === 0) {
-                    dispatch(addCity({ key: city.key, name: data.name }));
-                }
 
-                dispatch(assignWeatherForecast(data));
-            })
-            .catch(() => {
-                alert('Aradığınız şehir bulunamadı');
-            });
+    const onAddSubmit = (e) => {
+        process(city.key, dispatch, cities);
 
         e.preventDefault();
     }

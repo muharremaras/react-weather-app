@@ -7,37 +7,32 @@ import Status from '/components/status'
 import { Provider } from "react-redux";
 import store from '/store';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Home = () => {
+  return (
+    <Provider store={store}>
+      <div className="container">
+        <Head>
+          <title>React Weather App</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main>
+          <Top />
+          <City />
+          <Status />
+        </main>
 
-  render() {
-    return (
-      <Provider store={store}>
-        <div className="container">
-          <Head>
-            <title>React Weather App</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <main>
-            <Top />
-            <City />
-            <Status />
-          </main>
+        <footer>
+          <div className="mt-4 footer-text">© Weather Forecast 2021</div>
+        </footer>
 
-          <footer>
-            <div className="mt-4 footer-text">© Weather Forecast 2021</div>
-          </footer>
-
-          <style jsx>{`
+        <style jsx>{`
         .footer-text {
           color: #e6e6e6;
         }
       `}</style>
 
-          <style jsx global>{`
+        <style jsx global>{`
         html,
         body {
           padding: 0;
@@ -80,10 +75,9 @@ class Home extends Component {
           text-decoration: underline;
         }
       `}</style>
-        </div>
-      </Provider>
-    );
-  }
+      </div>
+    </Provider>
+  );
 }
 
 export default Home;
