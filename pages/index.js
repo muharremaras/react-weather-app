@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Top from '/components/top'
